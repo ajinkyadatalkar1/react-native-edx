@@ -190,9 +190,11 @@ console.log(o3[1]) // PRINT OUT ONLY THE FIRSTNAME (will typecast int 1 to strin
 console.log(o3["1"]) // PRINT OUT ONLY THE FIRSTNAME 
 
 Explaination:
-Object "keys" should be in string format, therefore when you try to retrive an object like this:
-"o3.1", it returns an error, because the "1" is an integer. When you write as "o3[1]" or "o3['1']"
-"1" is converted to string. Anything inside square brackets is converted to string.
+1) Object "keys" should be in string format, therefore when you try to retrive an object like this:
+   "o3.1", it returns an error, because the "1" is an integer. When you write as "o3[1]" or "o3['1']"
+   "1" is converted to string. Anything inside square brackets is converted to string.
+
+2) Remember that the data inside the objects is stored in JSON format.
 
 ----------------------------------------------------------------------------------------------------
 
@@ -255,3 +257,78 @@ console.log(o4.obj.key)
 "arr.__proto__", this will return the list of methods available for the array of name "arr"
 3) If an array and an object is given same name, say "arr", whenever arr is invoked array will be 
 given precedence over the object.
+
+----------------------------------------------------------------------------------------------------
+
+PROTOTYPAL INHERITANCE
+
+1) Most primitive data types have object wrappers
+	String()
+	Number()
+	Boolean()
+	Object()
+	Symbol()
+
+ For example:
+	42.toString() // will return error
+ However:
+	const x=42;
+	x.toString // will output the number enclosed in double quotes like: "42"
+
+2) In google chromes developer console you can try "x.__proto__" this will give you a list of all the
+   available methods for the Number object wrapper, like the "toString()" method.
+
+3) Javascript will automatically box (wrap) the primitive values so that you can access methods needed to
+   modify the data type and other factors of the variable.
+
+----------------------------------------------------------------------------------------------------
+
+HOISTING continued:
+In javascript, the variables are considered as lexative and non lexative.
+
+1) Variables declared using "var", functions and objects are all lexical. These are hoisted at the 
+   beginning of the script. Incase of lexical scoping, the variable is hoisted at the top but its value is
+   not initialized.
+
+   Example:
+	console.log(x); // will return undefined (variable is hoisted but value isnt initialized)
+	var x=5;
+	console.log(x); // will return 5
+	
+ Lexical variables stay in the memory until the end of the program or until the end of the functions
+ in which they are declared.
+
+2) Let and Const are non lexical variables, they are not hoisted at the beginning of the script, therefore:
+	Example:
+	console.log(y); // undefined referance error (program won't continue after this point)
+	const y = 5;
+	console.log(y);
+
+3) What happens when you call a method before its declared?
+	Example:
+	hello("ajinkya"); // Will display "hello ajinkya" because functions are hoisted as well as initialized at the beginning.
+	function hello(name){
+		console.log("Hello" + name);
+	}
+
+4) What if a function is declared inside a const object?
+	Example:
+	a[0]; // will return an error and program will stop execution
+	const a = { function() {console.log("hello")}}
+
+	However:
+	const a = { function() {console.log("hello")}}
+	a[0]; // will output "hello" to the console
+
+----------------------------------------------------------------------------------------------------
+
+Remember, that even if objects are declared as const, elements can still be pushed, poped or replaced.
+This is because, objects make use of the call by referance method.
+Example:
+	const a = {};
+	a.firstName = "ajinkya"; // this will work
+	a.lastName = "datalkar"; // this will also work
+
+However:
+	const a = "hello";
+	a="world"; // this will caise an error
