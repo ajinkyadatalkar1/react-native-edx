@@ -1,0 +1,17 @@
+Javascript runs on a single thread and is synchronous. As a result if you run an infinite loop, all the pages on the browser will hang.
+Sample hang function:
+
+************************************************************
+
+// this function will freeze a browser page if run in console
+function hang(seconds = 5) {
+  const doneAt = Date.now() + seconds * 1000
+  while(Date.now() < doneAt) {}
+}
+
+hang();
+************************************************************
+
+This will lock up all browser pages for 5 seconds. Browser will be responsive but pages will lock up.
+As a result we have a few async() functions. These functions run on the same thread however they prevent
+lockup.
