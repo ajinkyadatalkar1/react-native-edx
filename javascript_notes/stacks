@@ -1,0 +1,5 @@
+Exection Stack:
+-----------------------------------------------------------------------------------------------------
+1) Functions invoked by other functions get added to the call stack.
+2) When the function is complete, they are removed and the frames below continues executing.
+3) Stacks work on Last In First Out method (LIFO).
