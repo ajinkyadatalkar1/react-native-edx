@@ -1,0 +1,106 @@
+Javascript Higher Order Functions:
+------------------------------------------------------------------------------------------------------
+JAVASCRIPT has three higher order functions. They are:
+1) map
+2) filter
+3) reduce
+
+Note: Javascript currently doesnt have any other higher order function than these three.
+
+How to use higher order function?
+******************************************************************
+
+1) Using map:
+Eg1:
+	const arr = [1,2,3,4];
+	console.log(arr.map(function(x){ return x+1}));
+	const arr2 = arr.map(function(x){return x*2});
+	console.log(arr2);
+
+   Output:
+	[2,3,4,5]
+	[2,4,6,8]
+
+	
+
+ // Functions that take other fuctions as parameters are also called as higher order functions
+ // Declaring a custom map, when you call map function, this is the code for it:
+Eg2:
+   // this is how "array.map()" function is implemented behind the scenes:
+   function map(arr, fn) {
+   const newArr = []
+
+   arr.forEach(function(val) {
+   newArr.push(fn(val))
+  })
+
+   return newArr
+  }
+
+  function addOne(num) { return num + 1 }
+
+  const x = [0,1,2,3]
+
+  console.log(map(x, addOne))
+ 
+ Output: 
+	1,2,3,4
+  
+******************************************************************
+
+2) Using filter:
+Eg1:
+	const arr = [1,2,3,4];
+	console.log("display greater than 2 and filter elements less than 2: " + arr.filter(function(x) {return x>2}));
+
+Output:
+	display greater than 2 and filter elements less than 2: 3,4
+
+
+Eg2: // This is how the array.filter() function in implemented in javascript (behind the scenes)
+	const arr = [1,2,3,4];
+	function filter(arr, fn) {
+  		const newArr = []
+  		arr.forEach(val => {
+    		if (fn(val)) newArr.push(val)
+  	})
+
+  	return newArr
+	}
+
+	console.log("filter elements not divisible by 2: " + filter(arr, function(x) {return x%2==0}));	
+Output:
+	filter elements not divisible by 2: 2,4
+
+******************************************************************
+
+3) Using reduce:
+Syntax of reduce function: array.reduce(total,current_value,current_index,arr)
+	total = last returned value.
+	current_value = current value foreach element in an array.
+	arr = optional, cuurent array passed.
+	current_index = index of current value being passed.
+Eg1:
+	const arr = [1,2,3,4];
+	console.log(arr.reduce(function(x,y) {return x+y}));
+
+Output:
+	10
+
+Eg2:
+	const arr = [1,2,3,4];
+
+	//this is how reduce function is implemeted in javascript
+	function reduce(arr, fn, initialVal) {
+ 		 let returnVal = initialVal
+
+ 		 arr.forEach(val => {
+   		 returnVal = fn(returnVal, val)
+ 		 })
+
+ 	 return returnVal
+	}
+	
+	reduce(arr, function(x,y) {return x+y});
+Output:
+	10
