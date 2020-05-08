@@ -11,6 +11,8 @@ How to use higher order function?
 ******************************************************************
 
 1) Using map:
+Syntax of map function: array.map(currentValue, index, arr)
+// see W3Schools for the syntax of map method.
 Eg1:
 	const arr = [1,2,3,4];
 	console.log(arr.map(function(x){ return x+1}));
@@ -49,6 +51,8 @@ Eg2:
 ******************************************************************
 
 2) Using filter:
+Syntax of filter function: array.filter(currentValue, index, arr)
+// see W3School for the syntax of filter method.
 Eg1:
 	const arr = [1,2,3,4];
 	console.log("display greater than 2 and filter elements less than 2: " + arr.filter(function(x) {return x>2}));
@@ -80,6 +84,8 @@ Syntax of reduce function: array.reduce(total,current_value,current_index,arr)
 	current_value = current value foreach element in an array.
 	arr = optional, cuurent array passed.
 	current_index = index of current value being passed.
+
+// See W3School for the syntax of the reduce function.
 Eg1:
 	const arr = [1,2,3,4];
 	console.log(arr.reduce(function(x,y) {return x+y}));
