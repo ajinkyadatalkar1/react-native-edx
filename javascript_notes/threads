@@ -1,4 +1,4 @@
-Javascript runs on a single thread and is synchronous. As a result if you run an infinite loop, all the pages on the browser will hang.
+Javascript is a single threaded, synchronous language. As a result if you run an infinite loop, all the pages on the browser will hang.
 Sample hang function:
 
 ************************************************************
