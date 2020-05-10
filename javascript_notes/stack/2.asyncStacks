@@ -59,4 +59,24 @@ Answer: We can divide this in 4 parts:
 
 Once the element has been executed from the stack, it is collected by the garbage collector.
 
-Examples of asynchronous functions: setTime, XMLHttpRequests, AJAX, fetch.
+Examples of asynchronous functions are: setTime, XMLHttpRequests, AJAX, fetch.
+-----------------------------------------------------------------------------------------------------
+Just an example:
+  
+function printOne() {
+  console.log('one')
+}
+
+function printTwo() {
+  console.log('two')
+}
+
+function printThree() {
+  console.log('three')
+}
+
+// this may not print in the order that you expect, because of the way the JS
+// function queue works
+setTimeout(printOne, 1000)//will print the last, goes to queue, stack, api stack, queue and executed on stack after 1 sec
+setTimeout(printTwo, 0)// will go from queue to stack to API stack, back to queue
+printThree()// will print first, will go to queue and then executed on stack.
