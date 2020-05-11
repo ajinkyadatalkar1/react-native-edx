@@ -1,0 +1,17 @@
+<script>
+let i=0;
+function t() {
+fetch("https://jsonplaceholder.typicode.com/comments")
+.then(res => res.json())
+.then(function(json) {
+	document.getElementsByClassName('response')[0].innerHTML = "Hello " + json[i++].name;
+	console.log(json[0].id);
+});
+
+
+}
+</script>
+<div class='response'>
+Hi!
+</div>
+<button onClick = "t()"></button>
